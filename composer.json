@@ -1,0 +1,17 @@
+{
+    "name": "widuu/aliyuncall",
+    "description": "阿里云呼叫中心",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "widuu",
+            "email": "admin@widuu.com"
+        }
+    ],
+	"autoload": {
+        "psr-4": {
+          "widuu\\aliyunCall\\": "src/"
+        }
+    },
+    "require": {}
+}
