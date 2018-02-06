@@ -150,15 +150,16 @@ class Call
 	 * @author widuu <admin@widuu.com>
 	 */
 	
-	public function getConfig()
+	public function getConfig($name = '', $object_type = '', $object_id = '')
 	{
 		$this->getCommonParams();
 		$this->params['Action'] = 'GetConfig';
-		$this->params['Name'] 	= 'AllowHangup';
-		$this->params['ObjectType'] = 'instance';
-		$this->params['ObjectId'] 	= $this->instance_id;
+		$this->params['Name'] 	= $name;
+		$this->params['ObjectType'] = $object_type;
+		$this->params['ObjectId'] 	= $object_id;
 		$this->params['SecurityToken'] = $this->security_token;
 		$this->params['Signature'] = $this->makeSign();
+		//var_dump($this->params);
 		$context = Http::post(self::$action_url,$this->params);
 		$result  = json_decode($context,true);
 		return $result;
