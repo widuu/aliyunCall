@@ -114,7 +114,7 @@ class Auth
 			'response_type' => $this->response_type,
 			'state'		    => rand(10000,99999)
 		];
-		$url = self::$signin_url'?'.http_build_query($url_params);
+		$url = self::$signin_url.'?'.http_build_query($url_params);
 		header('Location:'.$url);
 		exit();
 	}
@@ -137,7 +137,7 @@ class Auth
 			'grant_type'    => 'authorization_code',
 			'client_secret' => $this->client_secret
 		];
-		$context = Http::post(self::$token_url,$post_fields);
+		$context = Http::post(self::$token_url,http_build_query($post_fields));
 		return json_decode($context, true);
 	}
 	
