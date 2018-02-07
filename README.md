@@ -9,9 +9,7 @@
 
     
     <?php
-    
-    require "src/Auth.php";
-    
+        
     require "vendor/autoload.php";
     use widuu\aliyunCall\Auth;
     
