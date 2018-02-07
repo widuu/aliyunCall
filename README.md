@@ -1,11 +1,11 @@
 #阿里云呼叫中心SDK
 
 
-##安装##
+##安装
 
     composer require widuu/aliyuncall:@dev 
     
-##使用示例##
+##使用示例
 
     
     <?php
@@ -32,9 +32,12 @@
     use widuu\aliyunCall\Call;
     
     $call = new Call('呼叫中心实例ID','上一步存储的ACCESS_TOKEN');
-    $result = $call -> getConfig('AllowHangup');
+	// 前端请求的参数json_decode解析后，传入参数
+    $result = $call -> getConfig($name,$objectType,$objectId);
     
     // 方法全部参考阿里云呼叫中心文档 https://help.aliyun.com/document_detail/63028.html?spm=a2c4g.11186623.6.566.hVNcED 默认全部开头字母小写
     
-## 联系方式
-    admin#widuu.com(#换成@)
+
+### 技术支持
+
+邮箱 : admin@widuu.com
