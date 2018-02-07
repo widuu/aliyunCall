@@ -3,7 +3,7 @@
 
 ## 安装
 
-    composer require widuu/aliyuncall:@dev 
+    composer require widuu/aliyuncall 
     
 ## 使用示例
 
