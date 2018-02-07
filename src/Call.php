@@ -5,7 +5,7 @@
  *
  * @package	widuu\aliyunCall
  * @author  widuu <admin@widuu.com>
- * @since	Version 1.0.0
+ * @since	Version 0.0.1
  */
  
 namespace widuu\aliyunCall;
@@ -139,9 +139,7 @@ class Call
 		$this->params['InstanceId']    = $this->instance_id;
 		$this->params['SecurityToken'] = $this->security_token;
 		$this->params['Signature'] = $this->makeSign();
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		return $this->getResponse();
 	}
 	
 	/**
@@ -159,10 +157,7 @@ class Call
 		$this->params['ObjectId'] 	= $object_id;
 		$this->params['SecurityToken'] = $this->security_token;
 		$this->params['Signature'] = $this->makeSign();
-		//var_dump($this->params);
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		return $this->getResponse();
 	}
 	
 	/**
@@ -179,9 +174,7 @@ class Call
 		$this->params['AccessKeyId']   = $this->access_key;
 		$this->params['SecurityToken'] = $this->security_token;
 		$this->params['Signature'] = $this->makeSign();
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		return $this->getResponse();
 	}
 	
 	/**
@@ -197,9 +190,7 @@ class Call
 		$this->params['InstanceId']    = $this->instance_id;
 		$this->params['SecurityToken'] = $this->security_token;
 		$this->params['Signature'] = $this->makeSign();
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		return $this->getResponse();
 	}
 	
 	/**
@@ -216,9 +207,7 @@ class Call
 		$this->params['SecurityToken'] = $this->security_token;
 		$this->params['AccessKeyId']   = $this->access_key;
 		$this->params['Signature'] = $this->makeSign();
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		return $this->getResponse();
 	}
 	
 	/**
@@ -235,9 +224,7 @@ class Call
 		$this->params['SecurityToken'] = $this->security_token;
 		$this->params['AccessKeyId']   = $this->access_key;
 		$this->params['Signature'] = $this->makeSign();
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		return $this->getResponse();
 	}
 	
 	/**
@@ -262,9 +249,7 @@ class Call
 			$this->params['ContactFlowId'] = $flow_id;
 		}
 		$this->params['Signature'] = $this->makeSign();
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		return $this->getResponse();
 	}
 	
 	/**
@@ -273,7 +258,17 @@ class Call
 	 * @author widuu  <admin@widuu.com>
 	 */
 	
-	public function listPhoneNumber(){}
+	public function listPhoneNumbers($outbound = '')
+	{
+		$this->getCommonParams();
+		$this->params['Action'] = 'ListPhoneNumbers';
+		$this->params['InstanceId']    = $this->instance_id;
+		$this->params['SecurityToken'] = $this->security_token;
+		$this->params['AccessKeyId']   = $this->access_key;
+		$this->params['OutboundOnly']  = $outbound;
+		$this->params['Signature'] = $this->makeSign();
+		return $this->getResponse();
+	}
 	
 	/**
 	 * 新增号码
@@ -297,9 +292,7 @@ class Call
 			$this->params['ContactFlowId'] = $flow_id;
 		}
 		$this->params['Signature'] = $this->makeSign();
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		return $this->getResponse();
 	}
 	
 	/**
@@ -318,9 +311,7 @@ class Call
 		$this->params['AccessKeyId']   = $this->access_key;
 		$this->params['PhoneNumberId'] = $this->access_key;
 		$this->params['Signature'] = $this->makeSign();
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		return $this->getResponse();
 	}
 	
 	/**
@@ -347,9 +338,7 @@ class Call
 		$this->params['UserIds'] = $user_ids;
 		$this->params['skillLevels'] = $skill_levels;
 		$this->params['Signature'] = $this->makeSign();
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		return $this->getResponse();
 	}
 	
 	/**
@@ -368,9 +357,7 @@ class Call
 		$this->params['SecurityToken'] = $this->security_token;
 		$this->params['SkillGroupId']  = $skill_group_id;
 		$this->params['Signature'] = $this->makeSign();
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		return $this->getResponse();
 	}
 	
 	/**
@@ -387,9 +374,7 @@ class Call
 		$this->params['AccessKeyId']   = $this->access_key;
 		$this->params['SecurityToken'] = $this->security_token;
 		$this->params['Signature'] = $this->makeSign();
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		return $this->getResponse();
 	}
 	
 	/**
@@ -408,9 +393,16 @@ class Call
 		$this->params['SecurityToken'] = $this->security_token;
 		$this->params['UserId']    = $user_id;
 		$this->params['Signature'] = $this->makeSign();
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		$context = $this->getResponse();
+		$skillLevels = $context['skillLevels']['skillLevel'];
+		foreach($skillLevels as &$v){
+			$phoneNumber = $v['skill']['outboundPhoneNumbers']['phoneNumber'];
+			unset($v['skill']['outboundPhoneNumbers']);
+			$v['skill']['outboundPhoneNumbers'] = $phoneNumber;
+		}
+		unset($context['skillLevels']);
+		$context['skillLevels'] = $skillLevels;
+		return $context;
 	}
 	
 	/**
@@ -433,9 +425,7 @@ class Call
 		$this->params['PageNumber']    = $start;
 		$this->params['PageSize']      = $limit;
 		$this->params['Signature'] = $this->makeSign();
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		return $this->getResponse();
 	}
 	
 	/**
@@ -464,9 +454,7 @@ class Call
 		$this->params['UserIds'] = $user_ids;
 		$this->params['skillLevels'] = $skill_levels;
 		$this->params['Signature'] = $this->makeSign();
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		return $this->getResponse();
 	}
 	
 	/**
@@ -491,9 +479,7 @@ class Call
 		$this->params['SkillGroupIds'] = $group_ids;
 		$this->params['SkillLevels']   = $skill_levels;
 		$this->params['Signature'] = $this->makeSign();
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		return $this->getResponse();
 	}
 	
 	/**
@@ -524,9 +510,7 @@ class Call
 		$this->params['SkillGroups']   = $groups;
 		$this->params['SkillLevels']   = $skill_levels;
 		$this->params['Signature'] = $this->makeSign();
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		return $this->getResponse();
 	}
 	
 	/**
@@ -545,9 +529,7 @@ class Call
 		$this->params['AccessKeyId']   = $this->access_key;
 		$this->params['UserId']		   = $user_id;
 		$this->params['Signature'] = $this->makeSign();
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		return $this->getResponse();
 	}
 	
 	/**
@@ -568,9 +550,7 @@ class Call
 		$this->params['PageNumber']	   = $start;
 		$this->params['PageSize']	   = $limit;
 		$this->params['Signature'] = $this->makeSign();
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		return $this->getResponse();
 	}
 	
 	/**
@@ -601,9 +581,7 @@ class Call
 		$this->params['SkillGroups']   = $groups;
 		$this->params['SkillLevels']   = $skill_levels;
 		$this->params['Signature'] = $this->makeSign();
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		return $this->getResponse();
 	}
 	
 	/**
@@ -622,9 +600,7 @@ class Call
 		$this->params['AccessKeyId']   = $this->access_key;
 		$this->params['UserIds']	   = $user_ids;
 		$this->params['Signature'] = $this->makeSign();
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		return $this->getResponse();
 	}
 	
 	/**
@@ -644,9 +620,7 @@ class Call
 		$this->params['FileName']	   = $filename;
 		$this->params['accessKeySecret'] = $this->access_secret;
 		$this->params['Signature'] = $this->makeSign();
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		return $this->getResponse();
 	}
 	
 	/**
@@ -680,11 +654,23 @@ class Call
 		$this->params['PageSize'] 	   = $start;
 		$this->params['SecurityToken'] = $this->security_token;
 		$this->params['Signature'] = $this->makeSign();
-		$context = Http::post(self::$action_url,$this->params);
-		$result  = json_decode($context,true);
-		return $result;
+		return $this->getResponse();
 	}
 	
+	/**
+	 * 获取返回结果
+	 *
+	 * @author widuu <admin@widuu.com>
+	 */
+
+	private function getResponse()
+	{
+		$context = Http::post(self::$action_url,$this->params);
+		$result  = json_decode($context,true);
+		$result  = $this->changeLowerKey($result);
+		return   $result;
+	}
+
 	/**
 	 * 签名算法
 	 *
@@ -740,4 +726,25 @@ class Call
         $res = preg_replace("/%7E/", "~", $res);
         return $res;
     }
+	
+	/**
+	 * 处理首写字母小写
+	 *
+	 * @param  array  data  预处理数组
+	 * @return array
+	 */
+	 
+	private function changeLowerKey($data = [])
+	{
+		if( !is_array($data) ) return $data;
+		$temp_array = [];
+		foreach( $data as $k => $v ){
+			$k = lcfirst($k);
+			if( is_array($v) ){
+				$v = $this->changeLowerKey($v);
+			}
+			$temp_array[$k] = $v;
+		}
+		return $temp_array;
+	}
 }

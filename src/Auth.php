@@ -5,7 +5,7 @@
  *
  * @package	widuu\aliyunCall
  * @author  widuu <admin@widuu.com>
- * @since	Version 1.0.0
+ * @since	Version 0.0.1
  */
  
 namespace widuu\aliyunCall;
@@ -157,7 +157,7 @@ class Auth
 			'grant_type'    => 'refresh_token',
 			'client_secret' => $this->client_secret
 		];
-		$context = Http::post(self::$token_url,$post_fields);
+		$context = Http::post(self::$token_url,http_build_query($post_fields));
 		return json_decode($context, true);
 	}
 	
@@ -176,7 +176,7 @@ class Auth
 			'client_id' 	=> $this->client_id,
 			'client_secret' => $this->client_secret
 		];
-		$context = Http::post(self::$revoke_url,$post_fields);
+		$context = Http::post(self::$revoke_url,http_build_query($post_fields));
 		return json_decode($context, true);
 	}
 }
