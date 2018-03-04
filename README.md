@@ -35,6 +35,13 @@
     
     // 方法全部参考阿里云呼叫中心文档 https://help.aliyun.com/document_detail/63028.html?spm=a2c4g.11186623.6.566.hVNcED 默认全部开头字母小写
     
+### DEMO 说明
+
+> 文件夹 `demo`，这个是官方demo的简化版本，所以请跟官方索要测试账号和密码
+
++ 1. 请求地址 `https://127.0.0.1:8443` 回调地址是 `https://127.0.0.1:8443/aliyun/auth/callback` 详细配置`base.php`
++ 2. 然后就可以布置测试了，记住回调地址目前是官方给的改了会出错。
++ 3. 如果您是用自己的测试，请在 `base.php` 填写自己的信息，替换自己的回调地址，然后将 `aliyun\auth\callback` 里边的 `index.php` 放到你的回调地址上
 
 ### 技术支持
 
